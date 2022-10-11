@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p $PORT",
     "lint": "next lint"
   },
   "dependencies": {
@@ -16,5 +16,6 @@
   "devDependencies": {
     "eslint": "8.25.0",
     "eslint-config-next": "12.3.1"
-  }
+  },
+  "cacheDirectories": [".next/cache"]
 }
