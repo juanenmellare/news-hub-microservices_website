@@ -1,0 +1,29 @@
+@import "styles/palette";
+
+@import "components/navbarLi/styles";
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo__image {
+  margin-right: 10px;
+}
+
+.logo__span {
+  font-weight: bold;
+  font-size: 26px;
+}
+
+.navbar__items {
+  align-items: center !important;
+}
+
+.navbar__items.show .navbar__items__link {
+  padding-left: 20px;
+}
+
+.background__ub--primary {
+  background-color: $UB_PRIMARY_RED;
+}
