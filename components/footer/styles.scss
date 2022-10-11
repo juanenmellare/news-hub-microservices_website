@@ -1,0 +1,16 @@
+@import "styles/palette";
+
+.footer {
+  padding: 10px 0;
+  text-align: center;
+  flex: 0;;
+}
+
+.footer__text {
+  color: white;
+}
+
+.background__ub--secondary {
+  background-color: $UB_SECONDARY_RED;
+}
+

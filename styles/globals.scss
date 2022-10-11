@@ -1,0 +1,21 @@
+@import "palette";
+
+@import "components/layout/styles";
+
+body {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: space-between;
+  background-color: $BACKGROUND_GREY;
+}
+
+.btn-primary {
+  background-color: $UB_PRIMARY_RED;
+  border-color: $UB_SECONDARY_RED !important;
+}
+
+.btn-primary:hover {
+  background-color: $UB_SECONDARY_RED;
+}

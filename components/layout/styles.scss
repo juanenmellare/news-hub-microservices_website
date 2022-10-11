@@ -1,0 +1,14 @@
+@import "components/navbar/styles";
+@import "components/footer/styles";
+
+.container-body {
+  margin-top: 70px;
+}
+
+.container--centered {
+  min-height: calc(100vh - 110px);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
