@@ -17,13 +17,13 @@ const Home = () => {
 
     return (
         <Masonry breakpointCols={{default: 4, 991: 3, 575: 1}} className={`row ${styles.containerCardNews}`}>
-            { newsList.map(({title, imageUrl, channel, url,  publishedAt}) => {
+            { newsList.map(({id, title, imageUrl, channel, url,  publishedAt}) => {
                     const channelImageSrc = `/channels/${channel.toString().toUpperCase()}.png`;
                     const publishedAtFormatted = moment(publishedAt).format('DD/MM/YYYY HH:mm');
 
-                    return <div className={`${styles.cardNews}`}>
+                    return <div key={id} className={`${styles.cardNews}`}>
                         <div className="card border-danger">
-                            <a href={url} target="_blank">
+                            <a href={url} target="_blank" rel="noreferrer">
                                 <img className="card-img-top" src={imageUrl} alt={imageUrl}/>
                                 <div className={`card-header ${styles.cardHeaderNews}`}>{title}</div>
                                 <div className={`card-body ${styles.cardBodyNews}`}>
