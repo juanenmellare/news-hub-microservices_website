@@ -1,0 +1,41 @@
+.containerCardNews {
+  margin: 15px 0 !important;
+}
+
+.cardNews {
+  margin: 20px 0 !important;
+}
+
+.cardNews a {
+  font-weight: normal;
+  text-decoration: none;
+  color: black;
+}
+
+.cardHeaderNews {
+  font-weight: 900;
+}
+
+.cardBodyNews {
+  padding: 0 15px !important;
+  margin: 10px 0;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardNewsDatetime {
+  margin: 0 0 -3px 5px;
+}
+
+.cardNewsIconRead {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.8);
+  border: 2px solid black;
+  padding: 0 4px;
+  right: 5px;
+  top: 5px;
+  border-radius: 100px;
+  font-size: 20px;
+}
