@@ -1,5 +1,8 @@
 import React from 'react';
 
+import styles from './NavbarLi.module.scss';
+
+
 const NavbarLi = ({href, label}) => {
     const [isActive, setIsActive] = React.useState(false);
 
@@ -9,7 +12,7 @@ const NavbarLi = ({href, label}) => {
 
     return (
         <li className="nav-item">
-            <a className={`nav-link navbar__items__link${isActive ? ' active' : ''}`} href={`/${href}`}>
+            <a className={`nav-link ${styles.navbarItemsLink} ${isActive ? ' active' : ''}`} href={`/${href}`}>
                 {label}
             </a>
         </li>

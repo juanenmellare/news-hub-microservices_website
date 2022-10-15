@@ -1,42 +1,21 @@
-import React from "react";
-import axios from "axios";
-import moment from "moment";
+import NewsCard from "../components/NewsCard";
 
-import styles from '../styles/Home.module.scss';
 import Masonry from "react-masonry-css";
+import styles from '../styles/Home.module.scss';
+
+import useNews from "../lib/news/hooks";
 
 
 const Home = () => {
-    const [newsList, setNewsList] = React.useState([]);
+    const { newsList } = useNews();
 
-    React.useEffect(() => {
-        axios.get("/api/news").then(({data: {newsList}}) => {
-            setNewsList(newsList);
-        });
-    }, [setNewsList]);
-
-    return (
-        <Masonry breakpointCols={{default: 4, 991: 3, 575: 1}} className={`row ${styles.containerCardNews}`}>
-            { newsList.map(({id, title, imageUrl, channel, url,  publishedAt}) => {
-                    const channelImageSrc = `/channels/${channel.toString().toUpperCase()}.png`;
-                    const publishedAtFormatted = moment(publishedAt).format('DD/MM/YYYY HH:mm');
-
-                    return <div key={id} className={`${styles.cardNews}`}>
-                        <div className="card border-danger">
-                            <a href={url} target="_blank" rel="noreferrer">
-                                <img className="card-img-top" src={imageUrl} alt={imageUrl}/>
-                                <div className={`card-header ${styles.cardHeaderNews}`}>{title}</div>
-                                <div className={`card-body ${styles.cardBodyNews}`}>
-                                    <img alt={channel} src={channelImageSrc} height="12"/>
-                                    <p className={styles.cardNewsDatetime}>{publishedAtFormatted}</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>;
-                }
-            )}
+    return <>
+        <Masonry
+            breakpointCols={{default: 4, 991: 3, 575: 1}}
+            className={`row ${styles.containerCardNews}`}>
+            { newsList.map(news => <NewsCard news={news}/>) }
         </Masonry>
-    );
+    </>
 };
 
 export default Home;

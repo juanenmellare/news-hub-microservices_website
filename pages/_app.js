@@ -1,5 +1,6 @@
 import '../styles/globals.scss';
-import Layout from "../components/layout";
+
+import Layout from "../components/Layout";
 import Head from "next/head";
 
 
