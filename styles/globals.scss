@@ -17,3 +17,13 @@ body {
 .btn-primary:hover {
   background-color: $UB_SECONDARY_RED;
 }
+
+.card--border-primary-red {
+  border: 2px solid $UB_SECONDARY_RED;
+}
+
+.card--narrow {
+  width: 375px;
+}
+
+

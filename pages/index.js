@@ -1,14 +1,14 @@
 import React from "react";
 
-import Masonry from "react-masonry-css";
-import styles from '../styles/Home.module.scss';
-
+import PageHead from "../components/PageHead";
 import NewsCard from "../components/NewsCard";
 import PaginationDots from "../components/PaginationsDots";
 import PaginationNumber from "../components/PaginationsNumber";
 
-import useNewsList from "../lib/news/hooks/useNewsList";
+import Masonry from "react-masonry-css";
+import styles from '../styles/Home.module.scss';
 
+import useNewsList from "../lib/news/hooks/useNewsList";
 const MASONRY_BREAK_POINT_COLS = Object.freeze({default: 4, 991: 3, 575: 1});
 
 
@@ -17,6 +17,7 @@ const Home = () => {
 
     return (
         <>
+            <PageHead title={'Home'}/>
             <Masonry
                 breakpointCols={MASONRY_BREAK_POINT_COLS}
                 className={`row ${styles.containerCardNews}`}>

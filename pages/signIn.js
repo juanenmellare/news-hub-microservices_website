@@ -1,8 +1,10 @@
-import styles from '../styles/SignIn.module.scss';
+import PageHead from "../components/PageHead";
+
 
 const SignIn = () => (
-    <div className="">
-    </div>
+    <>
+        <PageHead title={'Sign In'}/>
+    </>
 );
 
 export default SignIn;
