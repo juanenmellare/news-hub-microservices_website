@@ -1,29 +1,24 @@
 @import "styles/palette";
 
-@import "components/navbarLi/styles";
 
 .logo {
   display: flex;
   align-items: center;
 }
 
-.logo__image {
+.logoImage {
   margin-right: 10px;
 }
 
-.logo__span {
+.logoSpan {
   font-weight: bold;
   font-size: 26px;
 }
 
-.navbar__items {
+.navbarItems {
   align-items: center !important;
 }
 
-.navbar__items.show .navbar__items__link {
-  padding-left: 20px;
-}
-
-.background__ub--primary {
+.backgroundUbPrimary {
   background-color: $UB_PRIMARY_RED;
 }

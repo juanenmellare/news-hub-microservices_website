@@ -17,7 +17,7 @@ const handler = async (req, res) => {
     }
   });
 
-  res.status(response.status).json(response.data)
+  res.status(response.status).json(response.data);
 }
 
 export default handler;
