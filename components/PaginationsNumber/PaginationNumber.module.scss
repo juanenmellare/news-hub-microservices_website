@@ -1,13 +1,15 @@
+@import "styles/palette";
+
 .newsPaginationLink {
   color: black;
 }
 
 .newsPaginationLink:hover {
-  color: #900126;
+  color: $UB_SECONDARY_RED;
 }
 
 .newsPaginationLinkActive {
-  background-color: #900126 ;
-  border-color:  #900126 ;
+  background-color: $UB_SECONDARY_RED;
+  border-color: $UB_SECONDARY_RED;
   color: white;
 }

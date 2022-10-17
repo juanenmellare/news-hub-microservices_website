@@ -25,9 +25,9 @@ const Navbar = () => (
             </button>
             <div className={`collapse navbar-collapse ${styles.navbarItems}`} id="navbarSupportedContent">
                 <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <NavbarLi href={"/"} label="News"/>
-                    <NavbarLi href={"/signIn"} label="Sign In"/>
-                    <NavbarLi href={"/signUp"} label="Sign Up"/>
+                    <NavbarLi href={""} label="News"/>
+                    <NavbarLi href={"signIn"} label="Sign In"/>
+                    <NavbarLi href={"signUp"} label="Sign Up"/>
                 </ul>
             </div>
         </div>
