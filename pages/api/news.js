@@ -1,21 +1,13 @@
-import axios from "axios";
+import RestClient from "../../core/clients/restClient";
 
-const usersApiBaseUrl = process.env.NEWS_API_BASE_URL || "https://news-hub-microservices-n-api.herokuapp.com/v1";
-const usersApiUsername = process.env.NEWS_API_USER || "admin";
-const usersApiPassword = process.env.NEWS_API_PASS || "password";
+const newsApiBaseUrl = process.env.NEWS_API_BASE_URL || "https://news-hub-microservices-n-api.herokuapp.com/v1";
+const newsApiUsername = process.env.NEWS_API_USER || "admin";
+const newsApiPassword = process.env.NEWS_API_PASS || "password";
+
+const newsApiClient = new RestClient('news', newsApiBaseUrl, newsApiUsername, newsApiPassword);
 
 const handler = async (req, res) => {
-  const path = req.url.replace('/api/news', '');
-  const url = new URL(`${usersApiBaseUrl}${path}`);
-
-  const response = await axios({
-    method: req.method,
-    url: url.toString(),
-    auth: {
-      username: usersApiUsername,
-      password: usersApiPassword,
-    }
-  });
+  const response = await newsApiClient.call(req);
 
   res.status(response.status).json(response.data);
 }
