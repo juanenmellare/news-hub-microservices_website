@@ -1,20 +1,26 @@
 import React from 'react';
 
+import Link from "next/link";
+
 import styles from './NavbarLi.module.scss';
+import {useRouter} from "next/router";
 
 
 const NavbarLi = ({href, label}) => {
+    const { pathname } = useRouter();
     const [isActive, setIsActive] = React.useState(false);
 
     React.useEffect(() => {
-        setIsActive(window.location.pathname.split('/')[1] === href);
-    }, [href]);
+        setIsActive(href === pathname);
+    }, [href, pathname]);
 
     return (
         <li className="nav-item">
-            <a className={`nav-link ${styles.navbarItemsLink} ${isActive ? ' active' : ''}`} href={`/${href}`}>
-                {label}
-            </a>
+            <Link href={`/${href}`}>
+                <a className={`nav-link ${styles.navbarItemsLink} ${isActive ? ' active' : ''}`} >
+                    {label}
+                </a>
+            </Link>
         </li>
     );
 };

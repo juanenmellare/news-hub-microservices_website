@@ -20,14 +20,14 @@ const Home = () => {
             <Masonry
                 breakpointCols={MASONRY_BREAK_POINT_COLS}
                 className={`row ${styles.containerCardNews}`}>
-                { newsList.map(news => <NewsCard news={news}/>) }
+                { newsList.map(news => <NewsCard key={news.id} news={news}/>) }
             </Masonry>
             { !isLoading && <nav>
                 <ul className={`pagination justify-content-center ${styles.newsPagination}`}>
                     { currentPage > (pagesOffset + 1) && <PaginationNumber pageNumber={1} setPage={setPage}/> }
                     { currentPage > (pagesOffset + 2) && <PaginationDots/> }
                     { fromToPages.map(page =>
-                        <PaginationNumber pageNumber={page} isActive={page === currentPage} setPage={setPage}/>)
+                        <PaginationNumber key={page} pageNumber={page} isActive={page === currentPage} setPage={setPage}/>)
                     }
                     { (currentPage + pagesOffset + 1) < totalPages && <PaginationDots/> }
                     { (currentPage + pagesOffset) < totalPages && <PaginationNumber pageNumber={totalPages} setPage={setPage}/> }
