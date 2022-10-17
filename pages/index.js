@@ -1,41 +1,40 @@
 import React from "react";
-import axios from "axios";
-import moment from "moment";
 
-import styles from '../styles/Home.module.scss';
 import Masonry from "react-masonry-css";
+import styles from '../styles/Home.module.scss';
+
+import NewsCard from "../components/NewsCard";
+import PaginationDots from "../components/PaginationsDots";
+import PaginationNumber from "../components/PaginationsNumber";
+
+import useNewsList from "../lib/news/hooks/useNewsList";
+
+const MASONRY_BREAK_POINT_COLS = Object.freeze({default: 4, 991: 3, 575: 1});
 
 
 const Home = () => {
-    const [newsList, setNewsList] = React.useState([]);
-
-    React.useEffect(() => {
-        axios.get("/api/news").then(({data: {newsList}}) => {
-            setNewsList(newsList);
-        });
-    }, [setNewsList]);
+    const { newsList, totalPages, isLoading, currentPage, fromToPages, pagesOffset, setPage } = useNewsList();
 
     return (
-        <Masonry breakpointCols={{default: 4, 991: 3, 575: 1}} className={`row ${styles.containerCardNews}`}>
-            { newsList.map(({id, title, imageUrl, channel, url,  publishedAt}) => {
-                    const channelImageSrc = `/channels/${channel.toString().toUpperCase()}.png`;
-                    const publishedAtFormatted = moment(publishedAt).format('DD/MM/YYYY HH:mm');
-
-                    return <div key={id} className={`${styles.cardNews}`}>
-                        <div className="card border-danger">
-                            <a href={url} target="_blank" rel="noreferrer">
-                                <img className="card-img-top" src={imageUrl} alt={imageUrl}/>
-                                <div className={`card-header ${styles.cardHeaderNews}`}>{title}</div>
-                                <div className={`card-body ${styles.cardBodyNews}`}>
-                                    <img alt={channel} src={channelImageSrc} height="12"/>
-                                    <p className={styles.cardNewsDatetime}>{publishedAtFormatted}</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>;
-                }
-            )}
-        </Masonry>
+        <>
+            <Masonry
+                breakpointCols={MASONRY_BREAK_POINT_COLS}
+                className={`row ${styles.containerCardNews}`}>
+                { newsList.map(news => <NewsCard key={news.id} news={news}/>) }
+            </Masonry>
+            { !isLoading && <nav>
+                <ul className={`pagination justify-content-center ${styles.newsPagination}`}>
+                    { currentPage > (pagesOffset + 1) && <PaginationNumber pageNumber={1} setPage={setPage}/> }
+                    { currentPage > (pagesOffset + 2) && <PaginationDots/> }
+                    { fromToPages.map(page =>
+                        <PaginationNumber key={page} pageNumber={page} isActive={page === currentPage} setPage={setPage}/>)
+                    }
+                    { (currentPage + pagesOffset + 1) < totalPages && <PaginationDots/> }
+                    { (currentPage + pagesOffset) < totalPages && <PaginationNumber pageNumber={totalPages} setPage={setPage}/> }
+                </ul>
+            </nav>
+            }
+        </>
     );
 };
 
