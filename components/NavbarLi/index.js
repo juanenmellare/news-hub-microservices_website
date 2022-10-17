@@ -11,7 +11,7 @@ const NavbarLi = ({href, label}) => {
     const [isActive, setIsActive] = React.useState(false);
 
     React.useEffect(() => {
-        setIsActive(href === pathname);
+        setIsActive(href === pathname.substring(1));
     }, [href, pathname]);
 
     return (
