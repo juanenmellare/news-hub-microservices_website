@@ -1,11 +1,10 @@
 import PageHead from "../components/PageHead";
 import FormInput from "../components/FormInput";
-
-import useSignUp from "../lib/signUp/hooks/useSignUp";
+import useCreateUser from "../lib/users/hooks/useCreateUser";
 
 
 const SignUp = () => {
-    const { setFirstName, setLastName, setEmail, setPassword, setPasswordRepeat, submit } = useSignUp();
+    const { setFirstName, setLastName, setEmail, setPassword, setPasswordRepeat, submit } = useCreateUser();
 
     return (
         <>

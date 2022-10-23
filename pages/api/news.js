@@ -1,10 +1,5 @@
-import RestClient from "../../core/clients/restClient";
+import newsApiClient from "../../lib/news/clients/newsApiRestClient";
 
-const newsApiBaseUrl = process.env.NEWS_API_BASE_URL || "https://news-hub-microservices-n-api.herokuapp.com/v1";
-const newsApiUsername = process.env.NEWS_API_USER || "admin";
-const newsApiPassword = process.env.NEWS_API_PASS || "password";
-
-const newsApiClient = new RestClient('news', newsApiBaseUrl, newsApiUsername, newsApiPassword);
 
 const handler = async (req, res) => {
   const response = await newsApiClient.call(req);
