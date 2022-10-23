@@ -1,4 +1,4 @@
-import newsApiClient from "../../lib/news/clients/newsApiRestClient";
+import newsApiClient from "../../../src/lib/news/clients/newsApiRestClient";
 
 
 const handler = async (req, res) => {

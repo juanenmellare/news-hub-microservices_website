@@ -2,16 +2,21 @@ import React from 'react';
 import moment from "moment";
 
 import styles from './NewsCard.module.scss';
+import useRead from "../../lib/news/hooks/useRead";
 
 
-const NewsCard = ({ news: { title, imageUrl, channel, url, publishedAt }}) => {
+const NewsCard = ({ news }) => {
+    const { read, hasBeenRead } = useRead(news);
+
+    const { title, imageUrl, channel, publishedAt } = news;
     const channelImageSrc = `/channels/${channel.toString().toUpperCase()}.png`;
     const publishedAtFormatted = moment(publishedAt).format('DD/MM/YYYY HH:mm');
 
     return (
         <div className={`${styles.cardNews}`}>
             <div className="card border-danger">
-                <a href={url} target="_blank" rel="noreferrer">
+                <a onClick={read}>
+                    { hasBeenRead && <i className={`bi bi-eyeglasses ${styles.cardNewsIconRead}`}/> }
                     <img className="card-img-top" src={imageUrl} alt={imageUrl}/>
                     <div className={`card-header ${styles.cardHeaderNews}`}>{title}</div>
                     <div className={`card-body ${styles.cardBodyNews}`}>
