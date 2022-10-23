@@ -1,4 +1,4 @@
-import usersApiClient from "../../lib/users/clients/usersApiRestClient";
+import usersApiClient from "../../../src/lib/users/clients/usersApiRestClient";
 
 
 const handler = async (req, res) => {

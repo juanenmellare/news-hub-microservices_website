@@ -1,6 +1,6 @@
-import PageHead from "../components/PageHead";
-import useLogin from "../lib/users/hooks/useLogin";
-import FormInput from "../components/FormInput";
+import PageHead from "../src/components/PageHead";
+import useLogin from "../src/lib/users/hooks/useLogin";
+import FormInput from "../src/components/FormInput";
 
 
 const SignIn = () => {
