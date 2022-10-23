@@ -6,7 +6,7 @@ import styles from './NavbarLi.module.scss';
 import {useRouter} from "next/router";
 
 
-const NavbarLi = ({href, label}) => {
+const NavbarLi = ({href, label, onClick}) => {
     const { pathname } = useRouter();
     const [isActive, setIsActive] = React.useState(false);
 
@@ -16,8 +16,8 @@ const NavbarLi = ({href, label}) => {
 
     return (
         <li className="nav-item">
-            <Link href={`/${href}`}>
-                <a className={`nav-link ${styles.navbarItemsLink} ${isActive ? ' active' : ''}`} >
+            <Link href={href ? `/${href}` : '/'}>
+                <a className={`nav-link ${styles.navbarItemsLink} ${isActive ? ' active' : ''}`} onClick={onClick}>
                     {label}
                 </a>
             </Link>
