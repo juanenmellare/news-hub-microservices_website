@@ -1,14 +1,14 @@
 import React from "react";
 
-import PageHead from "../components/PageHead";
-import NewsCard from "../components/NewsCard";
-import PaginationDots from "../components/PaginationsDots";
-import PaginationNumber from "../components/PaginationsNumber";
+import PageHead from "../src/components/PageHead";
+import NewsCard from "../src/components/NewsCard";
+import PaginationDots from "../src/components/PaginationsDots";
+import PaginationNumber from "../src/components/PaginationsNumber";
 
 import Masonry from "react-masonry-css";
 import styles from '../styles/Home.module.scss';
 
-import useNewsList from "../lib/news/hooks/useNewsList";
+import useNewsList from "../src/lib/news/hooks/useNewsList";
 const MASONRY_BREAK_POINT_COLS = Object.freeze({default: 4, 991: 3, 575: 1});
 
 
@@ -23,7 +23,8 @@ const Home = () => {
                 className={`row ${styles.containerCardNews}`}>
                 { newsList.map(news => <NewsCard key={news.id} news={news}/>) }
             </Masonry>
-            { !isLoading && <nav>
+            { !isLoading &&
+            <nav>
                 <ul className={`pagination justify-content-center ${styles.newsPagination}`}>
                     { currentPage > (pagesOffset + 1) && <PaginationNumber pageNumber={1} setPage={setPage}/> }
                     { currentPage > (pagesOffset + 2) && <PaginationDots/> }

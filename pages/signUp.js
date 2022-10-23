@@ -1,6 +1,6 @@
-import PageHead from "../components/PageHead";
-import FormInput from "../components/FormInput";
-import useCreateUser from "../lib/users/hooks/useCreateUser";
+import PageHead from "../src/components/PageHead";
+import FormInput from "../src/components/FormInput";
+import useCreateUser from "../src/lib/users/hooks/useCreateUser";
 
 
 const SignUp = () => {
