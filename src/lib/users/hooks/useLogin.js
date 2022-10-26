@@ -26,12 +26,12 @@ const useLogin = () => {
 
             const data = { email, password };
             axios.post('/api/login', { data })
-                .then(() => axios.get('/api/users/'))
+                .then(() => axios.get('/api/users'))
                 .then(({ data }) => {
                     setUserData(data);
                     return router.push('/');
                 })
-                .catch(e => setError(e.toString())).catch(e => setError(e.toString()));
+                .catch(e => setError(e.toString()));
         }
     }
 
