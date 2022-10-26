@@ -11,7 +11,7 @@ class RestClient {
         this.authPassword = authPassword;
     }
 
-    call(request) {
+    async call(request) {
         const path = request.url.replace(this.handlerPath, '');
         const url = new URL(`${this.baseUrl}${path}`);
 
@@ -23,16 +23,21 @@ class RestClient {
             authorizationHeaderValues.push(`Basic ${basicAuthCredentialsEncoded}`);
         }
 
-        const { token } = cookie.parse(request.headers.cookie || '');
+        const {token} = cookie.parse(request.headers.cookie || '');
         if (token) {
             authorizationHeaderValues.push(token);
         }
 
-        const config = { url: url.toString(), method: request.method, data: request.body?.data || null,
-            headers: { Authorization: authorizationHeaderValues.join(', ') }
+        const config = {
+            url: url.toString(), method: request.method, data: request.body?.data || null,
+            headers: {Authorization: authorizationHeaderValues.join(', ')}
         };
 
-        return axios(config);
+        try {
+            return await axios(config);
+        } catch ({ response }) {
+            return response;
+        }
     }
 }
 
