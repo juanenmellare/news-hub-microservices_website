@@ -1,6 +1,5 @@
 import React from "react";
 
-
 const emptyUserDataState = {
     userData: null,
     setUserData: () => {},
@@ -9,7 +8,7 @@ const emptyUserDataState = {
 const UserDataContext = React.createContext(emptyUserDataState);
 
 const UserDataProvider = ({children}) => {
-    const [userData, setUserData] = React.useState(emptyUserDataState);
+    const [userData, setUserData] = React.useState(emptyUserDataState.userData);
 
     const value = { userData, setUserData };
     return (

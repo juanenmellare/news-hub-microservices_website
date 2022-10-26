@@ -24,7 +24,7 @@ const useRead = ({id, url, hasBeenRead}) => {
 
     return {
         read,
-        hasBeenRead: hasBeenReadValue,
+        hasBeenReadValue,
         error
     };
 }
