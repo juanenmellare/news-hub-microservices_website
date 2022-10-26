@@ -9,6 +9,10 @@ const useRead = ({id, url, hasBeenRead}) => {
 
     const { logout } = useLogout();
 
+    React.useEffect(() => {
+        setHasBeenReadValue(!!hasBeenRead);
+    }, [hasBeenRead]);
+
     const read = () => {
         if (!hasBeenReadValue) {
             axios.put(`/api/news/${id}`)
@@ -24,7 +28,7 @@ const useRead = ({id, url, hasBeenRead}) => {
 
     return {
         read,
-        hasBeenReadValue,
+        hasBeenRead: hasBeenReadValue,
         error
     };
 }
