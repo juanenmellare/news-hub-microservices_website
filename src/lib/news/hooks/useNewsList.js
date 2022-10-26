@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import {useRouter} from "next/router";
+import {useUserDataContext} from "../../users/hooks/useUserDataContext";
 
 const NEWS_LIST_LIMIT = 20;
 const PAGES_OFFSET = 1;
@@ -8,6 +9,7 @@ const PAGES_OFFSET = 1;
 const useNewsList = () => {
     const router = useRouter();
     const { page } = router.query;
+    const { userData } = useUserDataContext();
 
     const [isLoading, setIsLoading] = React.useState(true);
     const [newsList, setNewsList] = React.useState([]);
@@ -46,7 +48,7 @@ const useNewsList = () => {
             setIsLoading(false);
         });
 
-    }, [currentPage, setTotalPages, setNewsList, setFromToPages, setIsLoading]);
+    }, [currentPage, setTotalPages, setNewsList, setFromToPages, setIsLoading, userData]);
 
     return {
         isLoading,
