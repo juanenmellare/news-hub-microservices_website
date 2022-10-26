@@ -6,9 +6,9 @@ import useRead from "../../lib/news/hooks/useRead";
 
 
 const NewsCard = ({ news }) => {
-    const { read, hasBeenRead } = useRead(news);
+    const { read, hasBeenReadValue } = useRead(news);
 
-    const { title, imageUrl, channel, publishedAt } = news;
+    const { title, imageUrl, channel, publishedAt, hasBeenRead } = news;
     const channelImageSrc = `/channels/${channel.toString().toUpperCase()}.png`;
     const publishedAtFormatted = moment(publishedAt).format('DD/MM/YYYY HH:mm');
 
@@ -16,7 +16,8 @@ const NewsCard = ({ news }) => {
         <div className={`${styles.cardNews}`}>
             <div className="card border-danger">
                 <a onClick={read}>
-                    { hasBeenRead && <i className={`bi bi-eyeglasses ${styles.cardNewsIconRead}`}/> }
+                    { !!hasBeenRead && hasBeenReadValue &&
+                    <i className={`bi bi-eyeglasses ${styles.cardNewsIconRead}`}/> }
                     <img className="card-img-top" src={imageUrl} alt={imageUrl}/>
                     <div className={`card-header ${styles.cardHeaderNews}`}>{title}</div>
                     <div className={`card-body ${styles.cardBodyNews}`}>
