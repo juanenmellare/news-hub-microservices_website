@@ -14,7 +14,6 @@ const handler = async (req, res) => {
     res.setHeader("Set-Cookie", cookie.serialize("token", data.token, {
             httpOnly: true,
             secure: true,
-            maxAge: 60 * 60 * 8,
             sameSite: "strict",
             path: "/",
         })
