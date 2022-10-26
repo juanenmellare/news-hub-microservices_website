@@ -24,7 +24,7 @@ const useCreateUser = () => {
             event.preventDefault();
             event.stopPropagation();
 
-            const path = '/api/login';
+            const path = '/api/users';
             const data = { firstName, lastName, email, password, passwordRepeat };
             axios.post(path, { data }).then(() => router.push('/signIn'));
         }
