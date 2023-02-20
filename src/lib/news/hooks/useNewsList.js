@@ -6,9 +6,9 @@ import {useUserDataContext} from "../../users/hooks/useUserDataContext";
 const NEWS_LIST_LIMIT = 20;
 const PAGES_OFFSET = 1;
 
-const useNewsList = () => {
+export const useNewsList = () => {
     const router = useRouter();
-    const { page } = router.query;
+    const page = router?.query?.page || null;
     const { userData } = useUserDataContext();
 
     const [isLoading, setIsLoading] = React.useState(true);
@@ -59,6 +59,4 @@ const useNewsList = () => {
         setPage,
         pagesOffset: PAGES_OFFSET,
     };
-}
-
-export default useNewsList;
+};
