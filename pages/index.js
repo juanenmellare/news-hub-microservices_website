@@ -2,13 +2,13 @@ import React from "react";
 
 import PageHead from "../src/components/PageHead";
 import NewsCard from "../src/components/NewsCard";
-import PaginationDots from "../src/components/PaginationsDots";
+import PaginationDots from "../src/components/PaginationDots";
 import PaginationNumber from "../src/components/PaginationsNumber";
 
 import Masonry from "react-masonry-css";
 import styles from '../styles/Home.module.scss';
 
-import useNewsList from "../src/lib/news/hooks/useNewsList";
+import {useNewsList} from "../src/lib/news/hooks/useNewsList";
 const MASONRY_BREAK_POINT_COLS = Object.freeze({default: 4, 991: 3, 575: 1});
 
 
