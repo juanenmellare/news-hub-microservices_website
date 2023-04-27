@@ -30,15 +30,15 @@ export const useNewsList = () => {
     React.useEffect(() => {
         if (!currentPage) return;
         setIsLoading(true);
-        const offset = NEWS_LIST_LIMIT * currentPage;
+        const offset = NEWS_LIST_LIMIT * (currentPage - 1);
         const path = `/api/news?offset=${offset}`;
 
         axios.get(path).then(({ data: { pages, newsList } }) => {
-            setTotalPages(pages - 1);
+            setTotalPages(pages);
             setNewsList(newsList);
 
             const fromPage = currentPage > PAGES_OFFSET ? currentPage - PAGES_OFFSET : 1;
-            const toPage = currentPage + PAGES_OFFSET > pages - 1 ? pages - 1 : currentPage + PAGES_OFFSET;
+            const toPage = currentPage + PAGES_OFFSET > pages - 1 ? pages : currentPage + PAGES_OFFSET;
             const fromToPagesAux = [];
             for(let index = fromPage; index <= toPage; index++) {
                 fromToPagesAux.push(index);
